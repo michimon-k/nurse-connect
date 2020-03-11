@@ -5,6 +5,6 @@
     新規投稿
 .main
   - @posts.each do |post|
-    =post.title
+    =link_to post.title, post_path(post.id)
 
 .footer
