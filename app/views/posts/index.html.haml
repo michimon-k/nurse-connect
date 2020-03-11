@@ -1,0 +1,10 @@
+.header
+  = link_to root_path do
+    トップページ
+  = link_to new_post_path do
+    新規投稿
+.main
+  - @posts.each do |post|
+    =post.title
+
+.footer

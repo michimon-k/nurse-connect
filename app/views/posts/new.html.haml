@@ -1,0 +1,8 @@
+= link_to root_path do
+  トップページ
+新記事の作成
+
+= form_with model: @post, local: true do |f|
+  = f.text_field :title
+  = f.text_field :content
+  = f.submit '投稿する'
