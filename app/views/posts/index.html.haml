@@ -17,5 +17,6 @@
   - @posts.each do |post|
     .post_title
       =link_to post.title, post_path(post.id), class: :post_title
+      = post.user.nickname
 
 .top-footer
