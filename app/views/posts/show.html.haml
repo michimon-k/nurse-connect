@@ -1,8 +1,12 @@
-= @post.title
-= @post.created_at
-= simple_format @post.content
+= link_to root_path do
+  トップページ
 
 = link_to edit_post_path(@post.id) do
   編集
 = link_to post_path(@post.id), method: :delete do
   削除
+
+.show-post
+  = @post.title
+  = @post.created_at
+  = simple_format @post.content

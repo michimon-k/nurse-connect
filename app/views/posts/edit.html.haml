@@ -1,5 +1,6 @@
 投稿の編集
-= form_with model: @post, local: true do |f|
-  = f.text_field :title
-  = f.text_field :content
-  = f.submit '投稿する'
+.new-post
+  = form_with model: @post, local: true do |f|
+    = f.text_field :title
+    = f.text_field :content
+    = f.submit '投稿する'
