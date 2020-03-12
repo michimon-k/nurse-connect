@@ -1,10 +1,13 @@
-= link_to root_path do
-  トップページ
+.users-show
+  .users-show__top
+    = link_to root_path do
+      トップページ
 
-= @user.nickname
-さんの投稿一覧
+  .users-show__title
+    = @user.nickname
+    さんの投稿一覧
 
-.user-show-content
-  - @posts.each do |post|
-    =link_to post.title, post_path(post.id)
-    -# =link_to post.user.nickname, user_path(post.user) 
+  .users-show__content
+    - @posts.each_with_index do |post,index|
+      =link_to post.title, post_path(post.id, index)
+      -# =link_to post.user.nickname, user_path(post.user) 
