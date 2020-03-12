@@ -1,10 +1,11 @@
 = link_to root_path do
   トップページ
 
-= link_to edit_post_path(@post.id) do
-  編集
-= link_to post_path(@post.id), method: :delete do
-  削除
+- if user_signed_in? && current_user.id == @post.user_id
+  = link_to edit_post_path(@post.id) do
+    編集
+  = link_to post_path(@post.id), method: :delete do
+    削除
 
 .show-post
   = @post.title
