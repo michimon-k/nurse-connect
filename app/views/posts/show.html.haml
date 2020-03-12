@@ -1,13 +1,49 @@
-= link_to root_path do
-  トップページ
+.posts-show
+  .posts-show__top
+    = link_to root_path do
+      トップページ
 
-- if user_signed_in? && current_user.id == @post.user_id
-  = link_to edit_post_path(@post.id) do
-    編集
-  = link_to post_path(@post.id), method: :delete do
-    削除
+  - if user_signed_in? && current_user.id == @post.user_id
+    = link_to edit_post_path(@post.id) do
+      編集
+    = link_to post_path(@post.id), method: :delete do
+      削除
 
-.show-post
-  = @post.title
-  = @post.created_at
-  = simple_format @post.content
+  .posts-show__content
+    = @post.title
+    = @post.created_at
+    = simple_format @post.content
+
+  .posts-show__comment
+    - if current_user
+      =form_with model: [@post, @comment], local: true do |f|
+        =f.text_area :text
+        =f.submit 'コメントする'
+    - else
+      %strong
+        %p コメントの投稿には新規登録/ログインが必要です
+
+    - if @comments
+      - @comments.each do |comment|
+        %p
+          %strong
+            = link_to comment.user.nickname, "/users/#{comment.user_id}"
+            = comment.text
+
+      -# <% if @comments %>
+      -#   <% @comments.each do |comment| %>
+      -#     <p>
+      -#       <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+      -#       <%= comment.text %>
+      -#     </p>
+      -#   <% end %>
+      -# <% end %>
+
+    -# <% if current_user %>
+    -#   <%= form_with(model: [@tweet, @comment], local: true) do |form| %>
+    -#     <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
+    -#     <%= form.submit "SEND" %>
+    -#   <% end %>
+    -# <% else %>
+    -#   <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+    -# <% end %>

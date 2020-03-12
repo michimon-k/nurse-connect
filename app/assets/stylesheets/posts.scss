@@ -82,4 +82,17 @@
   }
 
 }
+// 詳細ページ
+.posts-show{
+  height: 100px;
+  border: 1px solid #000;
+  &__top{
+    height: 100px;
+    border: 1px solid #000;
+  }
+  &__content{
+    height: 100px;
+    border: 1px solid #000;
+  }
+}
 

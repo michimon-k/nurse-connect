@@ -8,5 +8,5 @@
     .new-post__form
       = form_with model: @post, local: true do |f|
         = f.text_field :title, placeholder: "タイトル", class: "new-post-title"
-        = f.text_field :content, placeholder: "内容", rows: "10", wrap: "hard", cols: "50", class: "new-post-content"
+        = f.text_area :content, placeholder: "内容", rows: "10", wrap: "hard", cols: "50", class: "new-post-content"
         = f.submit '投稿する', class:"new-post-submit"
