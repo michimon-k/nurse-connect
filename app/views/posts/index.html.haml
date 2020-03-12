@@ -1,10 +1,21 @@
-.header
-  = link_to root_path do
-    トップページ
-  = link_to new_post_path do
-    新規投稿
-.main
-  - @posts.each do |post|
-    =link_to post.title, post_path(post.id)
+.top-header
+  = link_to root_path, class: :top_logo do
+    nurse-connect
+  .devise
+    -if user_signed_in?
+      = link_to new_post_path do
+        新規投稿
+      = link_to destroy_user_session_path, method: :delete do
+        ログアウト
+    -else
+      = link_to new_user_session_path do
+        ログイン
+      = link_to new_user_session_path do
+        新規登録
 
-.footer
+.top-main
+  - @posts.each do |post|
+    .post_title
+      =link_to post.title, post_path(post.id), class: :post_title
+
+.top-footer
