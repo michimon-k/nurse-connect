@@ -3,6 +3,7 @@
     nurse-connect
   .devise
     -if user_signed_in?
+      = link_to current_user.nickname, user_path(current_user)
       = link_to new_post_path do
         新規投稿
       = link_to destroy_user_session_path, method: :delete do
@@ -17,6 +18,5 @@
   - @posts.each do |post|
     .post_title
       =link_to post.title, post_path(post.id), class: :post_title
-      = post.user.nickname
-
+      =link_to post.user.nickname, user_path(post.user)
 .top-footer
